@@ -1,40 +1,18 @@
-  import React from "react";
-  import './App.css';
-  import Header from './header.js';
-  import Footer from './footer.js';
-  import Main from './main.js';
-  import Container from 'react-bootstrap/Container';
-  import Nav from 'react-bootstrap/Nav';
-  import Navbar from 'react-bootstrap/Navbar';
-  import 'bootstrap/dist/css/bootstrap.min.css';
-  import MainJSON from './mainJSON.json';
+import Header from "./components/Header.js";
+import Main from "./components/Main.js";
+import Footer from "./components/Footer.js";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import  './App.css';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
 
 
-
-
-
-
-  class App extends React.Component {
-
-    constructor(props) {
-      super(props);
-      this.state = {
-        MainJSON:MainJSON,
-        displayHorned:false
-      }
-    }
-  
-    handleClose =()=>{
-      this.setState({
-        displayHorned:false
-      })
-    }
-  
-    render() {
-    
-      return (
-        <div className="App">
-           <Navbar bg="dark" variant="dark">
+function App() {
+  return (
+    <div className="App">
+      <div className="App">
+          <Navbar bg="dark" variant="dark">
           <Container>
             <Navbar.Brand href="#home">Salah</Navbar.Brand>
             <Nav className="me-auto">
@@ -44,16 +22,19 @@
             </Nav>
           </Container>
         </Navbar>
-              <Header/>
-            <Main/>
-  
-            <Footer/>
+
+        <Header/>
+        <div className="cont">
+        <Main/>
         </div>
-      )
+        <Footer/>
+      </div>
      
-    }
-  }
-  export default App;
+    </div>
+  );
+}
+
+export default App;
 
 
     /*   <div className="App">
