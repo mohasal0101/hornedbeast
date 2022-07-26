@@ -1,57 +1,56 @@
-import Header from "./components/Header.js";
-import Main from "./components/Main.js";
-import Footer from "./components/Footer.js";
+import React from 'react';
+import Footer from './components/Footer';
+import Header from './components/Header';
+import Main from './components/Main';
+import horneddata from './data.json';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import  './App.css';
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
+import SelectedBeast from './components/SelectedBeast';
 
+class App extends React.Component {
 
-function App() {
-  return (
-    <div className="App">
-      <div className="App">
-          <Navbar bg="dark" variant="dark">
-          <Container>
-            <Navbar.Brand href="#home">Salah</Navbar.Brand>
-            <Nav className="me-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#features">Features</Nav.Link>
-              <Nav.Link href="#pricing">Horned Beasts</Nav.Link>
-            </Nav>
-          </Container>
-        </Navbar>
+  constructor(props) {
+    super(props);
+    this.state = {
+      horneddata:horneddata,
+      selectedHorned:{},
+      displayHorned:false
+    }
+  }
+  
+  displayCardAsModel =(clickedHornedTitle) => {
+    const selectedHorned = horneddata.find(element=>element.title === clickedHornedTitle)
 
-        <Header/>
-        <div className="cont">
-        <Main/>
-        </div>
-        <Footer/>
+    this.setState({
+      selectedHorned:selectedHorned,
+      displayHorned:true
+    })
+
+  }
+  handleClose =()=>{
+    this.setState({
+      displayHorned:false
+    })
+  }
+  
+  render() {
+  
+    return (
+      <div>
+            <Header/>
+          <Main
+          horneddata={this.state.horneddata}
+          displayCardAsModel={this.displayCardAsModel}
+          />
+        <SelectedBeast
+          displayHornedObject={this.state.selectedHorned}
+          showSelectedHorned={this.state.displayHorned}
+          handleClose={this.handleClose}
+          />
+          <Footer/>
       </div>
-     
-    </div>
-  );
-}
+    )
+   
+  }
+  }
 
 export default App;
-
-
-    /*   <div className="App">
-          <Navbar bg="dark" variant="dark">
-          <Container>
-            <Navbar.Brand href="#home">Salah</Navbar.Brand>
-            <Nav className="me-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#features">Features</Nav.Link>
-              <Nav.Link href="#pricing">Horned Beasts</Nav.Link>
-            </Nav>
-          </Container>
-        </Navbar>
-
-        <Header/>
-        <Main/>
-        <Footer/>
-      </div> */
-  
-
