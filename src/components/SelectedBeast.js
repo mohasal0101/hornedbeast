@@ -1,39 +1,37 @@
 import React from 'react';
-import { Card, Modal, Button } from 'react-bootstrap';
+import Modal from 'react-bootstrap/Modal'
+import Button from 'react-bootstrap/Button';
 
 
 class SelectedBeast extends React.Component {
-  render() {
-    return (
-      <>
-        <Modal  show={this.props.showData} onHide={this.props.handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>{this.props.modalData.title}</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
+ 
+    handleClose=() => {
+      this.props.handleClose();
+    }
 
-            <Card>
-              <Card.Img src={this.props.modalData.img_source}
-                alt={this.props.modalData.title}
-              />
-              <Card.Body>
-                <Card.Text className="descriptionText">
-                  {this.props.modalData.description}
-                </Card.Text>
-              </Card.Body>
-            </Card>
-
-
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={this.props.handleClose}>
-              Close
-            </Button>
-          </Modal.Footer>
+    render() {
+        return(
+           
+       <Modal 
+       show={this.props.showSelectedHorned} 
+        size={'md'}
+        animation={'true'} 
+        onHide={this.handleClose}>      
+        <Modal.Header closeButton>
+        <Modal.Title>{this.props.displayHornedObject.title}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+        <img src={this.props.displayHornedObject.image_url} width = "250x250" alt={this.props.displayHornedObject.title}/> <br/>
+        </Modal.Body>    
+        <Modal.Body>
+        <p>{this.props.displayHornedObject.description}</p><br/>
+        </Modal.Body>
+        <Modal.Footer>
+        <Button variant="danger" onClick={this.handleClose}> Close </Button>
+        </Modal.Footer>
         </Modal>
-      </>
-    );
-  }
-}
-
+            )
+          }
+        }
+        
 export default SelectedBeast;
