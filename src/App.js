@@ -2,7 +2,7 @@ import React from 'react';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Main from './components/Main';
-import horneddata from './data.json';
+import horneddata from './horneddata.json';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SelectedBeast from './components/SelectedBeast';
 
